@@ -14,6 +14,9 @@ class App extends Component {
             <Route path="/" element={<PhoneTableList/>} />
           </Routes>
         </div>
+        <a href="https://amzn.to/3LgQt4K">
+            Amazon advertisement
+        </a>
       </div>
     );
   }
