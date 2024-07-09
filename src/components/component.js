@@ -31,15 +31,26 @@ export default class PhoneTableList extends Component {
         });
     }
 
+  add() {
+
+      }
+
   render() {
     const { searchTitle, phoneNumbers, currentIndex } = this.state;
     return (
       <div className="list row">
         <div className="col-md-6">
           <h4>Phone Number List</h4>
-          <button className="m-3 btn btn-sm btn-danger" onClick={this.getAll}>Get All</button>
+          <button className="m-3 btn btn-sm btn-danger" onClick={this.getAll}>Get Phone Numbers</button>
           <JsonToTable json={phoneNumbers} />
         </div>
+      </div>
+      <div className="list row">
+          <div className="col-md-6">
+            <h4>Phone Number Input</h4>
+            <button className="m-3 btn btn-sm btn-danger" onClick={this.add}>Add</button>
+            <input type="text" id="PhoneNumber" name="PhoneNumber">
+          </div>
       </div>
     );
   }
