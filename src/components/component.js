@@ -49,7 +49,7 @@ export default class PhoneTableList extends Component {
           <div className="col-md-6">
             <h4>Phone Number Input</h4>
             <button className="m-3 btn btn-sm btn-danger" onClick={this.add}>Add</button>
-            <input type="text" id="PhoneNumber" name="PhoneNumber">
+            <input type="text" id="PhoneNumber" name="PhoneNumber"></input>
           </div>
       </div>
     );
