@@ -38,6 +38,7 @@ export default class PhoneTableList extends Component {
   render() {
     const { searchTitle, phoneNumbers, currentIndex } = this.state;
     return (
+    <div id="parent">
       <div className="list row">
         <div className="col-md-6">
           <h4>Phone Number List</h4>
@@ -52,6 +53,7 @@ export default class PhoneTableList extends Component {
             <input type="text" id="PhoneNumber" name="PhoneNumber"></input>
           </div>
       </div>
+    </div>
     );
   }
 }
