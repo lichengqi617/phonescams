@@ -3,10 +3,11 @@ import PhoneTableDataService from "../services/service";
 import { Link } from "react-router-dom";
 import { JsonToTable } from "react-json-to-table";
 
-export default class PhoneTableList extends Component {
+export default class PhoneScamDBApp extends Component {
   constructor(props) {
     super(props);
     this.getAll = this.getAll.bind(this);
+    this.add = this.add.bind(this);
 
     this.state = {
       phoneNumbers: [],
@@ -32,7 +33,6 @@ export default class PhoneTableList extends Component {
     }
 
   add() {
-
       }
 
   render() {
@@ -57,4 +57,3 @@ export default class PhoneTableList extends Component {
     );
   }
 }
-
