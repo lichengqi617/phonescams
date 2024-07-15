@@ -62,19 +62,17 @@ export default class PhoneScamDBApp extends Component {
           <JsonToTable json={phoneNumbers} />
         </div>
       </div>
-      <div className="list row">
-          <div className="col-md-6">
-            <h4>Report Phone Scam</h4>
-            <p>Country Code</p>
-            <input type="text" id="CountryCode" name="CountryCode" value={ this.state.CountryCode } onChange={ this.handleChange }></input>
-            <p>Phone Number</p>
-            <input type="text" id="PhoneNumber" name="PhoneNumber" value={ this.state.PhoneNumber } onChange={ this.handleChange }></input>
-            <p>Message</p>
-            <textarea id="Message" name="Message" value={ this.state.Message } onChange={ this.handleChange } cols="100" rows="10"></textarea>
-          </div>
-          <div className="col-md-6">
-            <button className="m-3 btn btn-sm btn-danger" onClick={this.add}>Submit</button>
-          </div>
+      <div class="bottom-section">
+          <h3>Report Phone Scam</h3>
+          <form id="add-record-form">
+              <label for="CountryCode">Country Code:</label>
+              <input type="text" id="CountryCode" name="CountryCode" value={ this.state.CountryCode } onChange={ this.handleChange } required/><br></br>              
+              <label for="PhoneNumber">Phone Number:</label>
+              <input type="text" id="PhoneNumber" name="PhoneNumber" value={ this.state.PhoneNumber } onChange={ this.handleChange } required/><br></br>              
+              <label for="Message">Message:</label>
+              <textarea id="Message" name="Message" value={ this.state.Message } onChange={ this.handleChange } cols="50" rows="20"/><br></br>              
+              <button type="submit" onClick={this.add}>Submit</button>
+          </form>
       </div>
     </div>
     );
