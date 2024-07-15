@@ -5,7 +5,8 @@ class PhoneTableDataService {
     return http.get("/PhoneTable");
   }
 
-  add(CountryCode, PhoneNumber) {
+  add(CountryCode, PhoneNumber, Message) {
+    console.log(Message)
     return http.post("/PhoneTable/" + CountryCode + "/" + PhoneNumber);
   }
 }

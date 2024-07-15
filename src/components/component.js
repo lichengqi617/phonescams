@@ -11,10 +11,9 @@ export default class PhoneScamDBApp extends Component {
 
     this.state = {
       phoneNumbers: [],
-      currentIndex: -1,
-      searchTitle: "",
       PhoneNumber: null,
-      CountryCode: null
+      CountryCode: null,
+      Message: null
     };
   }
 
@@ -35,7 +34,7 @@ export default class PhoneScamDBApp extends Component {
     }
 
   add() {
-      PhoneTableDataService.add(this.state.CountryCode, this.state.PhoneNumber)
+      PhoneTableDataService.add(this.state.CountryCode, this.state.PhoneNumber, this.state.Message)
       .then(response => {
         console.log(response.data);
       })
@@ -53,26 +52,28 @@ export default class PhoneScamDBApp extends Component {
   }
   
   render() {
-    const { searchTitle, phoneNumbers, currentIndex } = this.state;
+    const { phoneNumbers, PhoneNumber, CountryCode, Message} = this.state;
     return (
     <div id="parent">
       <div className="list row">
         <div className="col-md-6">
-          <h4>Phone Number List</h4>
-          <button className="m-3 btn btn-sm btn-danger" onClick={this.getAll}>Get Phone Numbers</button>
+          <h4>Phone Scam Numbers List</h4>
+          <button className="m-3 btn btn-sm btn-danger" onClick={this.getAll}>Get Latest Phone Scam Numbers</button>
           <JsonToTable json={phoneNumbers} />
         </div>
       </div>
       <div className="list row">
           <div className="col-md-6">
-            <h4>Phone Number Input</h4>
+            <h4>Report Phone Scam</h4>
             <p>Country Code</p>
             <input type="text" id="CountryCode" name="CountryCode" value={ this.state.CountryCode } onChange={ this.handleChange }></input>
             <p>Phone Number</p>
             <input type="text" id="PhoneNumber" name="PhoneNumber" value={ this.state.PhoneNumber } onChange={ this.handleChange }></input>
+            <p>Message</p>
+            <textarea id="Message" name="Message" value={ this.state.Message } onChange={ this.handleChange } cols="100" rows="10"></textarea>
           </div>
           <div className="col-md-6">
-            <button className="m-3 btn btn-sm btn-danger" onClick={this.add}>Report Phone Scam</button>
+            <button className="m-3 btn btn-sm btn-danger" onClick={this.add}>Submit</button>
           </div>
       </div>
     </div>
