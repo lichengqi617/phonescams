@@ -21,7 +21,7 @@ class App extends Component {
             <h3>Advertisement</h3>
             <div class="ad-content">
                 <a href="https://amzn.to/3LgQt4K">
-                    <img src="./shoppingcart.webp" alt="Advertisement"/>
+                  <img src={require("./shoppingcart.webp")} alt="Advertisement"/>
                 </a>
                 <p>Amazon is on sale now! Go take a look!</p>
             </div>
