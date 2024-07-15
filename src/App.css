@@ -6,8 +6,8 @@
   padding: 10px 0;
 }
 
-/* Styles for Bottom Portion */
-.bottom-section {
+/* Styles for Report Portion */
+.report-section {
   margin: 20px auto;
   width: 80%;
 }
@@ -69,4 +69,29 @@ form textarea {
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical; /* Allow the user to resize the textarea vertically */
+}
+
+/* Styles for List Portion */
+.list-section {
+  margin: 20px auto;
+  width: 80%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+.update-section {
+  margin: 20px auto;
+  width: 80%;
 }
