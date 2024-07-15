@@ -17,25 +17,6 @@ export default class PhoneScamDBApp extends Component {
     };
   }
 
-  // Function to populate the table with data
-  populateTable(data) {
-    const tableBody = document.querySelector('#data-table tbody');
-    tableBody.innerHTML = '';
-  
-    data.forEach(item => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${item.id}</td>
-            <td>${item.countryCode}</td>
-            <td>${item.phoneNumber}</td>
-            <td>${item.voteCount}</td>
-            <td>${item.updateTime}</td>
-            <td>${item.status}</td>
-        `;
-        tableBody.appendChild(row);
-    });
-  }
-
   getAll() {
       this.setState({
         phoneNumbers: []
@@ -46,7 +27,21 @@ export default class PhoneScamDBApp extends Component {
           this.setState({
             phoneNumbers: response.data
           });
-          populateTable(response.data);
+          const tableBody = document.querySelector('#data-table tbody');
+          tableBody.innerHTML = '';
+        
+          data.forEach(item => {
+              const row = document.createElement('tr');
+              row.innerHTML = `
+                  <td>${item.id}</td>
+                  <td>${item.countryCode}</td>
+                  <td>${item.phoneNumber}</td>
+                  <td>${item.voteCount}</td>
+                  <td>${item.updateTime}</td>
+                  <td>${item.status}</td>
+              `;
+              tableBody.appendChild(row);
+          });
         })
         .catch(e => {
           console.log(e);
