@@ -95,3 +95,35 @@ th, td {
   margin: 20px auto;
   width: 80%;
 }
+
+/* Styles for Advertisement Section */
+.advertisement {
+  margin: 20px auto;
+  width: 80%;
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.advertisement h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.ad-content {
+  margin-top: 10px;
+}
+
+.ad-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.ad-content p {
+  margin-top: 10px;
+  color: #666;
+}
