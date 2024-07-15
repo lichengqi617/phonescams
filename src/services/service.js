@@ -2,7 +2,7 @@ import http from "../http-common";
 
 class PhoneTableDataService {
   getAll() {
-    return http.get("/PhoneTable");
+    return http.list("/PhoneTable");
   }
 
   add(CountryCode, PhoneNumber, Message) {
