@@ -9,6 +9,9 @@ class App extends Component {
   render() {
     return (
       <div>
+        <div class="top-bar">
+            <p>Hi there, this website is to create a database of phone scams. You can check the latest reported phone scams and report new phone scams.</p>
+        </div>
         <div className="container mt-3">
           <Routes>
             <Route path="/" element={<PhoneScamDBApp/>} />
