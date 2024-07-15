@@ -30,7 +30,7 @@ export default class PhoneScamDBApp extends Component {
           const tableBody = document.querySelector('#data-table tbody');
           tableBody.innerHTML = '';
         
-          data.forEach(item => {
+          response.data.forEach(item => {
               const row = document.createElement('tr');
               row.innerHTML = `
                   <td>${item.id}</td>
@@ -71,7 +71,7 @@ export default class PhoneScamDBApp extends Component {
     return (
     <div id="parent">
       <div class="update-section">
-          <button type="submit" onClick={this.getAll}>Get Latest Phone Scam Numbers</button>
+          <button type="submit" onClick={this.getAll}>Check Phone Scam Numbers</button>
       </div>
       <div class="list-section">
         <table id="data-table">
@@ -100,13 +100,6 @@ export default class PhoneScamDBApp extends Component {
               <textarea id="Message" name="Message" value={ this.state.Message } onChange={ this.handleChange } cols="25" rows="20"/><br></br>              
               <button type="submit" onClick={this.add}>Submit</button>
           </form>
-      </div>
-      <div className="list row">
-        <div className="col-md-6">
-          <h4>Phone Scam Numbers List</h4>
-          <button type="submit" onClick={this.getAll}>Get Latest Phone Scam Numbers</button>
-          <JsonToTable json={phoneNumbers} />
-        </div>
       </div>
     </div>
     );
