@@ -7,6 +7,7 @@ export default class PhoneScamDBApp extends Component {
   constructor(props) {
     super(props);
     this.getAll = this.getAll.bind(this);
+    this.getMostVoted = this.getMostVoted.bind(this);
     this.add = this.add.bind(this);
 
     this.state = {
@@ -48,6 +49,37 @@ export default class PhoneScamDBApp extends Component {
         });
     }
 
+  getMostVoted() {
+      this.setState({
+        phoneNumbers: []
+      })
+      PhoneTableDataService.getMostVoted()
+        .then(response => {
+          console.log(response.data);
+          this.setState({
+            phoneNumbers: response.data
+          });
+          const tableBody = document.querySelector('#data-table tbody');
+          tableBody.innerHTML = '';
+
+          response.data.forEach(item => {
+              const row = document.createElement('tr');
+              row.innerHTML = `
+                  <td>${item.id}</td>
+                  <td>${item.countryCode}</td>
+                  <td>${item.phoneNumber}</td>
+                  <td>${item.voteCount}</td>
+                  <td>${item.updateTime}</td>
+                  <td>${item.status}</td>
+              `;
+              tableBody.appendChild(row);
+          });
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    }
+
   add() {
       PhoneTableDataService.add(this.state.CountryCode, this.state.PhoneNumber, this.state.Message)
       .then(response => {
@@ -71,7 +103,7 @@ export default class PhoneScamDBApp extends Component {
     return (
     <div id="parent">
       <div class="update-section">
-          <button type="submit" onClick={this.getAll}>Check Phone Scam Numbers</button>
+          <button type="submit" onClick={this.getAll}>Check Most Recent Scam Reports</button>
       </div>
       <div class="list-section">
         <table id="data-table">
@@ -88,6 +120,25 @@ export default class PhoneScamDBApp extends Component {
             <tbody>
             </tbody>
         </table>
+      </div>
+      <div class="update-section">
+           <button type="submit" onClick={this.getMostVoted}>Check Most Common Scam Numbers</button>
+      </div>
+      <div class="list-section">
+            <table id="data-table">
+               <thead>
+                  <tr>
+                     <th>Id</th>
+                     <th>Country Code</th>
+                     <th>Phone Number</th>
+                     <th>Report Count</th>
+                     <th>Updated Time</th>
+                     <th>Status</th>
+                  </tr>
+               </thead>
+               <tbody>
+               </tbody>
+            </table>
       </div>      
       <div class="report-section">
           <h3>Report Phone Scam</h3>
