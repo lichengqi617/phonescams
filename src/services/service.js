@@ -5,6 +5,10 @@ class PhoneTableDataService {
     return http.get("/ListRecentPhoneTable");
   }
 
+  getMostVoted() {
+    return http.get("/ListHighestVotedPhoneNumber");
+  }
+
   add(CountryCode, PhoneNumber, Message) {
     console.log(Message)
     return http.post("/PhoneTable/" + CountryCode + "/" + PhoneNumber);
