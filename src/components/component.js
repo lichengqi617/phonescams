@@ -29,7 +29,7 @@ export default class PhoneScamDBApp extends Component {
           this.setState({
             phoneNumbersByUpdateTime: response.data
           });
-          const tableBody = document.querySelector('#data-table tbody');
+          const tableBody = document.querySelector('#data-table-by-time tbody');
           tableBody.innerHTML = '';
         
           response.data.forEach(item => {
@@ -60,7 +60,7 @@ export default class PhoneScamDBApp extends Component {
           this.setState({
             phoneNumbersByVotes: response.data
           });
-          const tableBody = document.querySelector('#data-table tbody');
+          const tableBody = document.querySelector('#data-table-by-vote tbody');
           tableBody.innerHTML = '';
 
           response.data.forEach(item => {
@@ -107,7 +107,7 @@ export default class PhoneScamDBApp extends Component {
           <button type="submit" onClick={this.getAll}>Check Most Recent Scam Reports</button>
       </div>
       <div class="list-section">
-        <table id="data-table">
+        <table id="data-table-by-time">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -126,7 +126,7 @@ export default class PhoneScamDBApp extends Component {
            <button type="submit" onClick={this.getMostVoted}>Check Most Common Scam Numbers</button>
       </div>
       <div class="list-section">
-            <table id="data-table">
+            <table id="data-table-by-vote">
                <thead>
                   <tr>
                      <th>Id</th>
