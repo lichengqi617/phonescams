@@ -11,7 +11,8 @@ export default class PhoneScamDBApp extends Component {
     this.add = this.add.bind(this);
 
     this.state = {
-      phoneNumbers: [],
+      phoneNumbersByUpdateTime: [],
+      phoneNumbersByVotes: [],
       PhoneNumber: null,
       CountryCode: null,
       Message: null
@@ -20,13 +21,13 @@ export default class PhoneScamDBApp extends Component {
 
   getAll() {
       this.setState({
-        phoneNumbers: []
+        phoneNumbersByUpdateTime: []
       })
       PhoneTableDataService.getAll()
         .then(response => {
           console.log(response.data);
           this.setState({
-            phoneNumbers: response.data
+            phoneNumbersByUpdateTime: response.data
           });
           const tableBody = document.querySelector('#data-table tbody');
           tableBody.innerHTML = '';
@@ -51,13 +52,13 @@ export default class PhoneScamDBApp extends Component {
 
   getMostVoted() {
       this.setState({
-        phoneNumbers: []
+        phoneNumbersByVotes: []
       })
       PhoneTableDataService.getMostVoted()
         .then(response => {
           console.log(response.data);
           this.setState({
-            phoneNumbers: response.data
+            phoneNumbersByVotes: response.data
           });
           const tableBody = document.querySelector('#data-table tbody');
           tableBody.innerHTML = '';
@@ -99,7 +100,7 @@ export default class PhoneScamDBApp extends Component {
   }
   
   render() {
-    const { phoneNumbers, PhoneNumber, CountryCode, Message} = this.state;
+    const { phoneNumbersByUpdateTime, phoneNumbersByVotes, PhoneNumber, CountryCode, Message} = this.state;
     return (
     <div id="parent">
       <div class="update-section">
