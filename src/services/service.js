@@ -2,7 +2,11 @@ import http from "../http-common";
 
 class PhoneTableDataService {
   getAll() {
-    return http.list("/PhoneTable");
+    return http.get("/ListRecentPhoneTable");
+  }
+
+  getMostVoted() {
+    return http.get("/ListHighestVotedPhoneNumber");
   }
 
   add(CountryCode, PhoneNumber, Message) {
