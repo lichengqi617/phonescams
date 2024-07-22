@@ -6,7 +6,7 @@ class PhoneTableDataService {
   }
 
   getMostVoted() {
-    return http.get("/ListHighestVotedPhoneNumber");
+    return http.get("/ListHighestVotedPhoneNumbers");
   }
 
   add(CountryCode, PhoneNumber, Message) {
