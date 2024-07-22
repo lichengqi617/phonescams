@@ -29,7 +29,7 @@ export default class PhoneScamDBApp extends Component {
           this.setState({
             phoneNumbersByUpdateTime: response.data
           });
-          const tableBody = document.querySelector('#data-table-by-time tbody');
+          const tableBody = document.querySelector('#data-table tbody');
           tableBody.innerHTML = '';
         
           response.data.forEach(item => {
@@ -60,7 +60,7 @@ export default class PhoneScamDBApp extends Component {
           this.setState({
             phoneNumbersByVotes: response.data
           });
-          const tableBody = document.querySelector('#data-table-by-vote tbody');
+          const tableBody = document.querySelector('#data-table tbody');
           tableBody.innerHTML = '';
 
           response.data.forEach(item => {
@@ -100,60 +100,42 @@ export default class PhoneScamDBApp extends Component {
   }
   
   render() {
-    const { phoneNumbersByUpdateTime, phoneNumbersByVotes, PhoneNumber, CountryCode, Message} = this.state;
-    return (
-    <div id="parent">
-      <div class="update-section">
-          <button type="submit" onClick={this.getAll}>Check Most Recent Scam Reports</button>
-      </div>
-      <div class="list-section">
-        <table id="data-table-by-time">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Country Code</th>
-                    <th>Phone Number</th>
-                    <th>Report Count</th>
-                    <th>Updated Time</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-      </div>
-      <div class="update-section">
-           <button type="submit" onClick={this.getMostVoted}>Check Most Common Scam Numbers</button>
-      </div>
-      <div class="list-section">
-            <table id="data-table-by-vote">
-               <thead>
+      const { phoneNumbersByUpdateTime, phoneNumbersByVotes, PhoneNumber, CountryCode, Message} = this.state;
+      return (
+      <div id="parent">
+        <div class="update-section">
+             <button type="submit" onClick={this.getAll}>Check Most Recent Scam Reports</button>
+             <button type="submit" onClick={this.getMostVoted}>Check Most Common Scam Numbers</button>
+        </div>
+        <div class="list-section">
+          <table id="data-table">
+              <thead>
                   <tr>
-                     <th>Id</th>
-                     <th>Country Code</th>
-                     <th>Phone Number</th>
-                     <th>Report Count</th>
-                     <th>Updated Time</th>
-                     <th>Status</th>
+                      <th>Id</th>
+                      <th>Country Code</th>
+                      <th>Phone Number</th>
+                      <th>Report Count</th>
+                      <th>Updated Time</th>
+                      <th>Status</th>
                   </tr>
-               </thead>
-               <tbody>
-               </tbody>
-            </table>
-      </div>      
-      <div class="report-section">
-          <h3>Report Phone Scam</h3>
-          <form id="add-record-form">
-              <label for="CountryCode">Country Code:</label>
-              <input type="text" id="CountryCode" name="CountryCode" value={ this.state.CountryCode } onChange={ this.handleChange } required/><br></br>              
-              <label for="PhoneNumber">Phone Number:</label>
-              <input type="text" id="PhoneNumber" name="PhoneNumber" value={ this.state.PhoneNumber } onChange={ this.handleChange } required/><br></br>              
-              <label for="Message">Message:</label>
-              <textarea id="Message" name="Message" value={ this.state.Message } onChange={ this.handleChange } cols="25" rows="20"/><br></br>              
-              <button type="submit" onClick={this.add}>Submit</button>
-          </form>
+              </thead>
+              <tbody>
+              </tbody>
+          </table>
+        </div>
+        <div class="report-section">
+            <h3>Report Phone Scam</h3>
+            <form id="add-record-form">
+                <label for="CountryCode">Country Code:</label>
+                <input type="text" id="CountryCode" name="CountryCode" value={ this.state.CountryCode } onChange={ this.handleChange } required/><br></br>
+                <label for="PhoneNumber">Phone Number:</label>
+                <input type="text" id="PhoneNumber" name="PhoneNumber" value={ this.state.PhoneNumber } onChange={ this.handleChange } required/><br></br>
+                <label for="Message">Message:</label>
+                <textarea id="Message" name="Message" value={ this.state.Message } onChange={ this.handleChange } cols="25" rows="20"/><br></br>
+                <button type="submit" onClick={this.add}>Submit</button>
+            </form>
+        </div>
       </div>
-    </div>
     );
   }
 }
