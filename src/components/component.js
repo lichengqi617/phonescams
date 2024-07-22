@@ -29,7 +29,7 @@ export default class PhoneScamDBApp extends Component {
           this.setState({
             phoneNumbersByUpdateTime: response.data
           });
-          const tableBody = document.querySelector('#data-table-by-time tbody');
+          const tableBody = document.querySelector('#data-table tbody');
           tableBody.innerHTML = '';
         
           response.data.forEach(item => {
@@ -60,7 +60,7 @@ export default class PhoneScamDBApp extends Component {
           this.setState({
             phoneNumbersByVotes: response.data
           });
-          const tableBody = document.querySelector('#data-table-by-vote tbody');
+          const tableBody = document.querySelector('#data-table tbody');
           tableBody.innerHTML = '';
 
           response.data.forEach(item => {
@@ -104,10 +104,11 @@ export default class PhoneScamDBApp extends Component {
     return (
     <div id="parent">
       <div class="update-section">
-          <button type="submit" onClick={this.getAll}>Check Most Recent Scam Reports</button>
+           <button type="submit" onClick={this.getAll}>Check Most Recent Scam Reports</button>
+           <button type="submit" onClick={this.getMostVoted}>Check Most Common Scam Numbers</button>
       </div>
       <div class="list-section">
-        <table id="data-table-by-time">
+        <table id="data-table">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -122,25 +123,6 @@ export default class PhoneScamDBApp extends Component {
             </tbody>
         </table>
       </div>
-      <div class="update-section">
-           <button type="submit" onClick={this.getMostVoted}>Check Most Common Scam Numbers</button>
-      </div>
-      <div class="list-section">
-            <table id="data-table-by-vote">
-               <thead>
-                  <tr>
-                     <th>Id</th>
-                     <th>Country Code</th>
-                     <th>Phone Number</th>
-                     <th>Report Count</th>
-                     <th>Updated Time</th>
-                     <th>Status</th>
-                  </tr>
-               </thead>
-               <tbody>
-               </tbody>
-            </table>
-      </div>      
       <div class="report-section">
           <h3>Report Phone Scam</h3>
           <form id="add-record-form">
